@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dthrga3pb4idp" path="res://escenas/personaje/personaje.tscn" id="3_wpukg"]
 [ext_resource type="PackedScene" uid="uid://cq3bmp52kuxmh" path="res://escenas/trampa/trampa.tscn" id="4_bfali"]
 [ext_resource type="PackedScene" uid="uid://clpm6pyguhef8" path="res://escenas/moneda/moneda.tscn" id="5_dn0x7"]
+[ext_resource type="PackedScene" uid="uid://delyiixxkrshb" path="res://escenas/contenedor_monedas/contenedor_monedas.tscn" id="5_tifen"]
 
 [node name="Nivel1" type="Node2D" unique_id=1884173406]
 
@@ -25,11 +26,13 @@ position = Vector2(137, -42)
 [node name="Personaje" parent="." unique_id=807952463 instance=ExtResource("3_wpukg")]
 position = Vector2(12, -59)
 
-[node name="Moneda" parent="." unique_id=1532151480 instance=ExtResource("5_dn0x7")]
+[node name="ContenedorMonedas" parent="." unique_id=1907220070 instance=ExtResource("5_tifen")]
+
+[node name="Moneda3" parent="ContenedorMonedas" unique_id=1476454224 instance=ExtResource("5_dn0x7")]
+position = Vector2(-125, -60)
+
+[node name="Moneda" parent="ContenedorMonedas" unique_id=1532151480 instance=ExtResource("5_dn0x7")]
 position = Vector2(-71, -60)
 
-[node name="Moneda2" parent="." unique_id=1387969857 instance=ExtResource("5_dn0x7")]
+[node name="Moneda2" parent="ContenedorMonedas" unique_id=1387969857 instance=ExtResource("5_dn0x7")]
 position = Vector2(-23, -57)
-
-[node name="Moneda3" parent="." unique_id=1476454224 instance=ExtResource("5_dn0x7")]
-position = Vector2(-125, -60)
