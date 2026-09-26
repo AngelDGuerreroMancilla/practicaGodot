@@ -20,5 +20,5 @@ func _iniciar_animacion() -> void:
 	tween.set_loops() # Dejarlo vacío significa que se repetirá infinitamente
 	
 	# as_relative() hace que se mueva 15 píxeles desde donde esté en ese momento
-	tween.tween_property(self, "position", Vector2(0, -15), 0.5).as_relative().set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "position", Vector2(0, 15), 0.5).as_relative().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", Vector2(0, -5), 0.5).as_relative().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", Vector2(0, 5), 0.5).as_relative().set_trans(Tween.TRANS_SINE)

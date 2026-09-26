@@ -7,7 +7,7 @@
 
 [node name="EscenaPrincipal" type="Node2D" unique_id=230686612]
 script = ExtResource("1_pdctq")
-niveles = Array[PackedScene]([ExtResource("4_sbgap"), ExtResource("2_snxy5"), ExtResource("3_yoxmf")])
+niveles = Array[PackedScene]([ExtResource("2_snxy5"), ExtResource("3_yoxmf"), ExtResource("4_sbgap")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2046256723]
 zoom = Vector2(2.19, 2.19)
