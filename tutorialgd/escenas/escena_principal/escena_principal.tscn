@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ivowictw25vm"]
+
+[ext_resource type="PackedScene" uid="uid://emceulr253bj" path="res://escenas/nivel_1/nivel_1.tscn" id="1_pdctq"]
+
+[node name="EscenaPrincipal" type="Node2D" unique_id=230686612]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2046256723]
+zoom = Vector2(2.19, 2.19)
+
+[node name="Nivel1" parent="." unique_id=1884173406 instance=ExtResource("1_pdctq")]

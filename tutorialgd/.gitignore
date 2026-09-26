@@ -1,0 +1,14 @@
+# Archivos generados por Godot 4+
+.godot/
+
+# Archivos de compilación de Android
+/android/
+
+# Archivos de exportación y ejecutables
+export_presets.cfg
+*.apk
+*.aab
+*.exe
+*.pck
+*.zip
+*.tar.gz
