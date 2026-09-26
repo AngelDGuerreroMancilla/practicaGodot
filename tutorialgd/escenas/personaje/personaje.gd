@@ -1,20 +1,26 @@
 extends CharacterBody2D
 
+signal personaje_muerto
+
 @export var animacion: AnimatedSprite2D 
 @export var area_2D: Area2D 
 @export var material_personaje_rojo : ShaderMaterial
 
 var _velocidad : float = 100.0
 var _velocidad_salto: float = -300.0
+var _muerto: bool
+
 
 
 func _ready():
+	add_to_group("personajes")
 	area_2D.body_entered.connect(_on_area_2d_body_entered)
 	
 
 
 func _physics_process(delta):
-	
+	if _muerto:
+		return
 	
 	# gravedad
 	velocity += get_gravity() * delta
@@ -44,3 +50,6 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	animacion.material = material_personaje_rojo
+	_muerto = true
+	animacion.stop()
+	personaje_muerto.emit()
