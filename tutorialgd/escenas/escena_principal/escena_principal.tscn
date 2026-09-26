@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bmnpexicvu3b3" path="res://escenas/escena_principal/escena_principal.gd" id="1_pdctq"]
 [ext_resource type="PackedScene" uid="uid://emceulr253bj" path="res://escenas/nivel_1/nivel_1.tscn" id="2_snxy5"]
+[ext_resource type="PackedScene" uid="uid://bbr7lir2t31b" path="res://escenas/nivel2/nivel_2.tscn" id="3_yoxmf"]
 
 [node name="EscenaPrincipal" type="Node2D" unique_id=230686612]
 script = ExtResource("1_pdctq")
-niveles = Array[PackedScene]([ExtResource("2_snxy5")])
+niveles = Array[PackedScene]([ExtResource("2_snxy5"), ExtResource("3_yoxmf")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2046256723]
 zoom = Vector2(2.19, 2.19)

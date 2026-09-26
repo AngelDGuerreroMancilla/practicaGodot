@@ -17,4 +17,4 @@ func moneda_recogida():
 	_monedas_recogidas += 1
 	
 	if _monedas_recogidas == _total_monedas:
-		print("nivel superado")
+		get_parent().get_parent().siguiente_nivel()
