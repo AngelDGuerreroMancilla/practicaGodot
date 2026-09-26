@@ -48,8 +48,10 @@ func _physics_process(delta):
 		animacion.play("idle")
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	animacion.material = material_personaje_rojo
 	_muerto = true
 	animacion.stop()
+	await  get_tree().create_timer(0.5).timeout
+	
 	personaje_muerto.emit()
