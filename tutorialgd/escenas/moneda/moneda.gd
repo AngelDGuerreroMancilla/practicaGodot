@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var area_2d : Area2D
+@export var reproductor: AudioStreamPlayer2D
 
 var contenedor_monedas: ContenedorMonedas
 
@@ -10,12 +11,11 @@ func _ready() -> void:
 
 func _recogida(_body):
 	contenedor_monedas.moneda_recogida()
+	reproductor.reparent(get_parent())
+	reproductor.play()
 	queue_free()
 
 func _iniciar_animacion() -> void:
-	# Imprimimos un mensaje en la consola para confirmar que se está ejecutando
-	print("Animando moneda...") 
-	
 	var tween: Tween = create_tween()
 	tween.set_loops() 
 	

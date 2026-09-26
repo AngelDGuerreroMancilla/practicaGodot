@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://47o35pl1b7ou" path="res://sprites/tileset_mazmorra.png" id="1_jyuw3"]
 [ext_resource type="Script" uid="uid://dspqdduw5muoq" path="res://escenas/moneda/moneda.gd" id="1_ypcej"]
+[ext_resource type="AudioStream" uid="uid://c31k8lrprp1m7" path="res://sonidos/sonido_moneda.wav" id="3_ml8qm"]
+[ext_resource type="Script" uid="uid://d2vik0gs46by0" path="res://escenas/moneda/reproductor_sonido_moneda.gd" id="4_y48gn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7csy"]
 atlas = ExtResource("1_jyuw3")
@@ -47,12 +49,18 @@ _data = {
 &"rotar": SubResource("Animation_ml8qm")
 }
 
-[node name="Moneda" type="Node2D" unique_id=1532151480 node_paths=PackedStringArray("area_2d")]
+[node name="Moneda" type="Node2D" unique_id=1532151480 node_paths=PackedStringArray("area_2d", "reproductor")]
 script = ExtResource("1_ypcej")
 area_2d = NodePath("Area2D")
+reproductor = NodePath("Sprite2D/ReproductorSonidoMoneda")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1298612768]
 texture = SubResource("AtlasTexture_d7csy")
+
+[node name="ReproductorSonidoMoneda" type="AudioStreamPlayer2D" parent="Sprite2D" unique_id=292823920]
+stream = ExtResource("3_ml8qm")
+bus = &"SFX"
+script = ExtResource("4_y48gn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=849586762]
 collision_layer = 8
