@@ -2,6 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://bo10sqh6uo6bq" path="res://escenas/personaje/sprite_frames_personaje.tres" id="1_jqp8e"]
 [ext_resource type="Script" uid="uid://cet3gr5ncxtil" path="res://escenas/personaje/personaje.gd" id="1_yv5yb"]
+[ext_resource type="Material" uid="uid://cl1jkg7ohg787" path="res://escenas/personaje/material_personaje_rojo.tres" id="2_wky4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nda5"]
 size = Vector2(14, 16)
@@ -14,8 +15,10 @@ collision_layer = 4
 script = ExtResource("1_yv5yb")
 animacion = NodePath("Animacion")
 area_2D = NodePath("Area2D")
+material_personaje_rojo = ExtResource("2_wky4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832821688]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_3nda5")
 
@@ -30,5 +33,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2046346174]
+visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_tbcmv")
