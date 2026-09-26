@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbr7lir2t31b" path="res://escenas/nivel2/nivel_2.tscn" id="3_yoxmf"]
 [ext_resource type="PackedScene" uid="uid://dt27pema3rrm7" path="res://escenas/escena_final/escena_final.tscn" id="4_sbgap"]
 [ext_resource type="AudioStream" uid="uid://csyoql15iygaw" path="res://musica/musica.wav" id="5_rrast"]
+[ext_resource type="PackedScene" uid="uid://b8mxomede8cip" path="res://escenas/contador_muertes/contador_muertes.tscn" id="6_y7kll"]
 
 [node name="EscenaPrincipal" type="Node2D" unique_id=230686612]
 script = ExtResource("1_pdctq")
@@ -17,3 +18,15 @@ zoom = Vector2(2.19, 2.19)
 stream = ExtResource("5_rrast")
 autoplay = true
 bus = &"Musica"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1847141702]
+
+[node name="ContadorMuertes" parent="CanvasLayer" unique_id=1754482857 instance=ExtResource("6_y7kll")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_top = 26.0
+offset_right = 0.0
+offset_bottom = 26.0
+grow_vertical = 1
