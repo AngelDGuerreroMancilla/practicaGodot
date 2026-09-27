@@ -17,6 +17,8 @@ func _ready() -> void:
 	else:
 		_crear_nivel(_nivel_actual)
 
+
+
 func _crear_nivel(numero_nivel: int):
 	_nivel_instanciado = niveles[numero_nivel -1 ].instantiate()
 	add_child(_nivel_instanciado)

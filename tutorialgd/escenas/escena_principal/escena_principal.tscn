@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://csyoql15iygaw" path="res://musica/musica.wav" id="5_rrast"]
 [ext_resource type="PackedScene" uid="uid://dmjs33a7siup5" path="res://escenas/controlador_partida/control_partida.tscn" id="6_px6n3"]
 [ext_resource type="PackedScene" uid="uid://b8mxomede8cip" path="res://escenas/contador_muertes/contador_muertes.tscn" id="6_y7kll"]
+[ext_resource type="Script" uid="uid://b32ngtjt0k8nd" path="res://escenas/escena_principal/controlador_pausa.gd" id="8_e307b"]
 
 [node name="EscenaPrincipal" type="Node2D" unique_id=230686612 node_paths=PackedStringArray("controlador_partida")]
 script = ExtResource("1_pdctq")
@@ -34,3 +35,7 @@ offset_top = 26.0
 offset_right = 0.0
 offset_bottom = 26.0
 grow_vertical = 1
+
+[node name="ControladorPausa" type="Node" parent="." unique_id=1863714747]
+process_mode = 3
+script = ExtResource("8_e307b")
