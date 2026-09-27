@@ -6,6 +6,16 @@
 [ext_resource type="StyleBox" uid="uid://kv3l48qfyqmb" path="res://estilos_botones/hover.tres" id="4_hkuy5"]
 [ext_resource type="StyleBox" uid="uid://bhdy0c48tdpif" path="res://estilos_botones/focus.tres" id="5_7mlcq"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3nda5"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 400, 1)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0, 0)
+
 [node name="MenuPrincipal" type="Control" unique_id=148991575]
 layout_mode = 3
 anchors_preset = 15
@@ -55,3 +65,19 @@ theme_override_styles/pressed = ExtResource("3_lbtcn")
 theme_override_styles/hover = ExtResource("4_hkuy5")
 theme_override_styles/focus = ExtResource("5_7mlcq")
 text = "Salir"
+
+[node name="Control" type="Control" parent="." unique_id=1494645236]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Control" unique_id=2060057762]
+amount = 500
+lifetime = 20.0
+preprocess = 20.0
+process_material = SubResource("ParticleProcessMaterial_3nda5")
