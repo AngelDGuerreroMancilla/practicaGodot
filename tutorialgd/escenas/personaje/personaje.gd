@@ -14,6 +14,11 @@ var _muerto: bool
 var sensibilidad_movimiento: float = 3.0
 var sensibilidad_salto: float = 15.0
 var tiempo_sin_mover: float = 0.0
+
+# Variables exclusivas para saber si el touchpad está enviando movimiento
+var _touchpad_derecha: bool = false
+var _touchpad_izquierda: bool = false
+var _touchpad_salto: bool = false
 # -----------------------------------------
 
 func _ready():
@@ -24,36 +29,33 @@ func _ready():
 # --- Nueva función: Leer el Touchpad (deslizamiento) ---
 func _input(event: InputEvent) -> void:
 	if _muerto: 
-		return # Si está muerto, ignoramos el pad
+		return 
 
 	if event is InputEventMouseMotion:
-		tiempo_sin_mover = 0.0 # Reiniciamos porque el dedo se mueve
+		tiempo_sin_mover = 0.0 
 		
 		# Movimiento lateral
 		if event.relative.x > sensibilidad_movimiento:
-			Input.action_press("derecha")
-			Input.action_release("izquierda")
+			_touchpad_derecha = true
+			_touchpad_izquierda = false
 		elif event.relative.x < -sensibilidad_movimiento:
-			Input.action_press("izquierda")
-			Input.action_release("derecha")
+			_touchpad_izquierda = true
+			_touchpad_derecha = false
 			
 		# Salto (hacia arriba)
 		if event.relative.y < -sensibilidad_salto:
-			Input.action_press("saltar")
-			# Liberamos rápido para que el 'is_action_just_pressed' vuelva a funcionar luego
-			await get_tree().create_timer(0.05).timeout
-			Input.action_release("saltar")
+			_touchpad_salto = true
 
-# --- Nueva función: Detener al personaje si el dedo se queda quieto ---
+# --- Detener al personaje (solo la parte del touchpad) ---
 func _process(delta: float) -> void:
 	if _muerto: return
 	
 	tiempo_sin_mover += delta
 	if tiempo_sin_mover > 0.1:
-		Input.action_release("derecha")
-		Input.action_release("izquierda")
+		_touchpad_derecha = false
+		_touchpad_izquierda = false
 
-# --- Tu código original de movimiento (Intacto) ---
+# --- Movimiento ---
 func _physics_process(delta):
 	if _muerto:
 		return
@@ -61,18 +63,23 @@ func _physics_process(delta):
 	# gravedad
 	velocity += get_gravity() * delta
 	
-	if Input.is_action_just_pressed("saltar") && is_on_floor():
+	# Salto: Revisa si tocaste el teclado O si deslizaste en el touchpad
+	if (Input.is_action_just_pressed("saltar") or _touchpad_salto) and is_on_floor():
 		velocity.y += _velocidad_salto
+		
+	# Limpiamos el salto del touchpad para simular que solo se presionó una vez
+	_touchpad_salto = false 
 	
-	# mov lateral
-	if Input.is_action_pressed("derecha"):
+	# mov lateral: Revisa si usas el teclado O el touchpad
+	if Input.is_action_pressed("derecha") or _touchpad_derecha:
 		velocity.x = _velocidad 
 		animacion.flip_h = true
-	elif Input.is_action_pressed("izquierda"):
+	elif Input.is_action_pressed("izquierda") or _touchpad_izquierda:
 		velocity.x = - _velocidad
 		animacion.flip_h = false
 	else: 
 		velocity.x = 0
+		
 	move_and_slide()
 
 	# animacion
@@ -89,9 +96,12 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	_muerto = true
 	animacion.stop()
 	
-	# Soltamos los botones virtuales por si te moriste mientras deslizabas el dedo
-	Input.action_release("derecha")
-	Input.action_release("izquierda")
+	# Liberamos el cursor al morir
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	# Apagamos el movimiento del touchpad por seguridad
+	_touchpad_derecha = false
+	_touchpad_izquierda = false
 	
 	await get_tree().create_timer(0.5).timeout
 	
