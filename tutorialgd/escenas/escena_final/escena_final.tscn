@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://dt27pema3rrm7"]
 
+[ext_resource type="AudioStream" uid="uid://cvfnkkirfof28" path="res://sonidos/sonido_ganaste.wav" id="1_0jc1b"]
+
+[sub_resource type="GDScript" id="GDScript_3nda5"]
+resource_name = "controlador_escena_final"
+script/source = "extends Node2D
+
+@onready var sonido_ganaste: AudioStreamPlayer2D = $SonidoGanaste
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	sonido_ganaste.play()
+"
+
 [node name="EscenaFinal" type="Node2D" unique_id=1062876270]
+script = SubResource("GDScript_3nda5")
 
 [node name="Label" type="Label" parent="." unique_id=2033060510]
 anchors_preset = 8
@@ -15,3 +28,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "¡GANASTE!"
+
+[node name="SonidoGanaste" type="AudioStreamPlayer2D" parent="." unique_id=464858335]
+stream = ExtResource("1_0jc1b")
+volume_db = 15.918

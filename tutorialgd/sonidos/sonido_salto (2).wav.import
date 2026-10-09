@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boe3uwe4nkyml"
+path="res://.godot/imported/sonido_salto (2).wav-566079a3c18da992b5ea13d20a7da284.sample"
+
+[deps]
+
+source_file="res://sonidos/sonido_salto (2).wav"
+dest_files=["res://.godot/imported/sonido_salto (2).wav-566079a3c18da992b5ea13d20a7da284.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

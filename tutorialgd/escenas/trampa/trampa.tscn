@@ -1,16 +1,8 @@
 [gd_scene format=3 uid="uid://cq3bmp52kuxmh"]
 
 [ext_resource type="Texture2D" uid="uid://47o35pl1b7ou" path="res://sprites/tileset_mazmorra.png" id="1_7ls0y"]
-
-[sub_resource type="GDScript" id="GDScript_3nda5"]
-script/source = "extends RigidBody2D
-
-@export var raycast : RayCast2D
-
-func _physics_process(_delta: float) -> void:
-	if raycast.get_collider() != null:
-		freeze=false 
-"
+[ext_resource type="Script" uid="uid://d1dsy213ep6de" path="res://escenas/trampa/controlador_trampa.gd" id="1_s0k0e"]
+[ext_resource type="AudioStream" uid="uid://d4mf1p3ls6k6m" path="res://sonidos/sonido_bloque_trampa.wav" id="3_we6vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nda5"]
 size = Vector2(16, 16)
@@ -22,7 +14,7 @@ size = Vector2(16, 1)
 collision_mask = 5
 lock_rotation = true
 freeze = true
-script = SubResource("GDScript_3nda5")
+script = ExtResource("1_s0k0e")
 raycast = NodePath("RayCast2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=831657108]
@@ -32,6 +24,9 @@ shape = SubResource("RectangleShape2D_3nda5")
 texture = ExtResource("1_7ls0y")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
+
+[node name="SonidoTrampa" type="AudioStreamPlayer2D" parent="." unique_id=503861453]
+stream = ExtResource("3_we6vm")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1344833908]
 target_position = Vector2(0, 250)
