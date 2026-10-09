@@ -2,6 +2,7 @@ extends Node2D
 @export var niveles : Array[PackedScene]
 @export var controlador_partida: ControladorPartida
 
+@onready var sonido_siguiente_nivel: AudioStreamPlayer2D = $SonidoSiguienteNivel
 
 var _nivel_actual : int = 1 
 var _nivel_instanciado: Node
@@ -44,7 +45,7 @@ func siguiente_nivel():
 	_nivel_actual +=1
 	_eliminar_nivel()
 	_crear_nivel.call_deferred(_nivel_actual)
-
+	sonido_siguiente_nivel.play()
 
 func _cargar_nivel(): 
 	_nivel_actual = ControladorGlobal.nivel

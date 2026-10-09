@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbr7lir2t31b" path="res://escenas/nivel2/nivel_2.tscn" id="3_yoxmf"]
 [ext_resource type="PackedScene" uid="uid://dt27pema3rrm7" path="res://escenas/escena_final/escena_final.tscn" id="4_sbgap"]
 [ext_resource type="AudioStream" uid="uid://csyoql15iygaw" path="res://musica/musica.wav" id="5_rrast"]
+[ext_resource type="AudioStream" uid="uid://bibrfyfitiq7m" path="res://sonidos/sonido_siguiente_nivel.wav" id="6_asb8d"]
 [ext_resource type="PackedScene" uid="uid://dmjs33a7siup5" path="res://escenas/controlador_partida/control_partida.tscn" id="6_px6n3"]
 [ext_resource type="PackedScene" uid="uid://b8mxomede8cip" path="res://escenas/contador_muertes/contador_muertes.tscn" id="6_y7kll"]
 [ext_resource type="Script" uid="uid://b32ngtjt0k8nd" path="res://escenas/escena_principal/controlador_pausa.gd" id="8_e307b"]
@@ -17,10 +18,13 @@ controlador_partida = NodePath("ControlPartida")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2046256723]
 zoom = Vector2(2.19, 2.19)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1116177148]
+[node name="Musica" type="AudioStreamPlayer2D" parent="." unique_id=1116177148]
 stream = ExtResource("5_rrast")
 autoplay = true
 bus = &"Musica"
+
+[node name="SonidoSiguienteNivel" type="AudioStreamPlayer2D" parent="." unique_id=619286264]
+stream = ExtResource("6_asb8d")
 
 [node name="ControlPartida" parent="." unique_id=1948912575 instance=ExtResource("6_px6n3")]
 
