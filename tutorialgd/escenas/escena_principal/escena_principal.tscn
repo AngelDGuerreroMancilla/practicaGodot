@@ -25,6 +25,7 @@ bus = &"Musica"
 
 [node name="SonidoSiguienteNivel" type="AudioStreamPlayer2D" parent="." unique_id=619286264]
 stream = ExtResource("6_asb8d")
+volume_db = 8.814
 
 [node name="ControlPartida" parent="." unique_id=1948912575 instance=ExtResource("6_px6n3")]
 

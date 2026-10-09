@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://boe3uwe4nkyml"
-path="res://.godot/imported/sonido_salto (2).wav-566079a3c18da992b5ea13d20a7da284.sample"
+path="res://.godot/imported/sonido_salto.wav-f3336596f2152a957884a513f65fecbb.sample"
 
 [deps]
 
-source_file="res://sonidos/sonido_salto (2).wav"
-dest_files=["res://.godot/imported/sonido_salto (2).wav-566079a3c18da992b5ea13d20a7da284.sample"]
+source_file="res://sonidos/sonido_salto.wav"
+dest_files=["res://.godot/imported/sonido_salto.wav-f3336596f2152a957884a513f65fecbb.sample"]
 
 [params]
 

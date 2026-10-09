@@ -6,6 +6,10 @@ signal personaje_muerto
 @export var area_2D: Area2D 
 @export var material_personaje_rojo : ShaderMaterial
 
+@onready var sonido_muerte: AudioStreamPlayer2D = $SonidoMuerte
+@onready var sonido_salto: AudioStreamPlayer2D = $SonidoSalto
+
+
 var _velocidad : float = 100.0
 var _velocidad_salto: float = -300.0
 var _muerto: bool
@@ -26,7 +30,9 @@ func _physics_process(delta):
 	velocity += get_gravity() * delta
 	
 	if Input.is_action_just_pressed("saltar") && is_on_floor():
+		sonido_salto.play()
 		velocity.y += _velocidad_salto
+		
 	
 	# mov lateral
 	if Input.is_action_pressed("derecha"):
@@ -49,9 +55,12 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
+	sonido_muerte.play()
 	animacion.material = material_personaje_rojo
 	_muerto = true
+	
 	animacion.stop()
+	
 	await  get_tree().create_timer(0.5).timeout
 	
 	personaje_muerto.emit()

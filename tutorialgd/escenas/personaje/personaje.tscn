@@ -3,6 +3,8 @@
 [ext_resource type="SpriteFrames" uid="uid://bo10sqh6uo6bq" path="res://escenas/personaje/sprite_frames_personaje.tres" id="1_jqp8e"]
 [ext_resource type="Script" uid="uid://cet3gr5ncxtil" path="res://escenas/personaje/personaje.gd" id="1_yv5yb"]
 [ext_resource type="Material" uid="uid://cl1jkg7ohg787" path="res://escenas/personaje/material_personaje_rojo.tres" id="2_wky4x"]
+[ext_resource type="AudioStream" uid="uid://nauqm0jsa1c3" path="res://sonidos/sonido_muerte.wav" id="4_dsp2h"]
+[ext_resource type="AudioStream" uid="uid://boe3uwe4nkyml" path="res://sonidos/sonido_salto.wav" id="5_8trwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nda5"]
 size = Vector2(14, 16)
@@ -27,6 +29,13 @@ unique_name_in_owner = true
 texture_filter = 1
 sprite_frames = ExtResource("1_jqp8e")
 animation = &"idle"
+
+[node name="SonidoMuerte" type="AudioStreamPlayer2D" parent="." unique_id=397233809]
+stream = ExtResource("4_dsp2h")
+volume_db = 10.576
+
+[node name="SonidoSalto" type="AudioStreamPlayer2D" parent="." unique_id=1402860888]
+stream = ExtResource("5_8trwc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1350278688]
 collision_layer = 0
