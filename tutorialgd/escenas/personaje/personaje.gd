@@ -66,13 +66,10 @@ func _physics_process(delta):
 	
 	# gravedad
 	velocity += get_gravity() * delta
-	
-	if Input.is_action_just_pressed("saltar") && is_on_floor():
-		sonido_salto.play()
-		velocity.y += _velocidad_salto
 		
-	# Salto: Revisa si tocaste el teclado O si deslizaste en el touchpad
+	# SALTO UNIFICADO: Revisa si tocaste el teclado O si deslizaste en el touchpad
 	if (Input.is_action_just_pressed("saltar") or _touchpad_salto) and is_on_floor():
+		sonido_salto.play()
 		velocity.y += _velocidad_salto
 		
 	# Limpiamos el salto del touchpad para simular que solo se presionó una vez
@@ -100,13 +97,17 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
+	# CANDADO DE MUERTE: Si ya murió, ignoramos los siguientes golpes
+	if _muerto:
+		return 
+
 	sonido_muerte.play()
 	animacion.material = material_personaje_rojo
 	_muerto = true
 	
 	animacion.stop()
 	
-	await  get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	# Liberamos el cursor al morir
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
